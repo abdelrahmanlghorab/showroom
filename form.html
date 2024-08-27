@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>car admin</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="animate.css">
+    </head>
+    <body>
+    <div id="form-style"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="home.html"><img src="./images/home-logo-icon-0.png" style="width: 50px;height: 50px;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse"  id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active list-unstyled">
+                    <a class="nav-link" href="usedmarket.html"><b>used market</b> <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item list-unstyled">
+                    <a class="nav-link" href="form.html"><b>login</b></a>
+                </li>
+                <li class="nav-item dropdown list-unstyled">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <b>caterogies</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="1.html"><b>mercedes</b></a>
+                        <a class="dropdown-item" href="2.html"><b>Opel</b></a>
+                        <!--  <div class="dropdown-divider"></div>-->
+                        <a class="dropdown-item" href="3.html"><b>audi</b></a>
+                        <a class="dropdown-item" href="4.html"><b>BMW</b></a>
+                        <a class="dropdown-item" href="5.html"><b>porsh</b></a>
+                        <a class="dropdown-item" href="6.html"><b>pigo</b></a>
+                        <a class="dropdown-item" href="7.html"><b>scoda</b></a>
+                        <a class="dropdown-item" href="8.html"><b>volkswagen</b></a>
+                    </div>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2 border-danger" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+        <div class="the-form form-style">
+        <div class="form1 wow zoomInUp" data-wow-duration="1s" data-wow-delay=".4s">
+            <form action="#" class="needs-validation the-form" id="form"  method="post" novalidate>
+               <div class="header">
+              <!--<img src="logo.jpg" class="a" style="margin-left: 400px">-->
+                   <div class="div1">
+                    <b class="b" style="color: red";>Login <span class="sc">bfcai</span></b>
+                   </div>
+                </div>
+ <div class="div2">
+  <div class="form-group1">
+      <div>
+    <label for="validationCustom01" class="wow heartBeat" data-wow-duration="2s" data-wow-delay=".5s" style="color: white"><b>User name</b></label>
+    <input type="text" class="form-control wow rubberBand" name="username" data-wow-duration="2s" data-wow-delay=".5s"style="width: 300px" id="validationCustom01" aria-describedby="emailHelp" placeholder="User_name" required>
+      <div class="invalid-feedback">
+          Please provide a valid name.
+      </div>
+      <div class="valid-feedback">
+          Looks good!
+      </div>
+  </div>
+  </div>
+  <div class="form-group3">
+      <div>
+    <label for="validationCustom02" class="wow heartBeat" data-wow-duration="4s" data-wow-delay=".5s" style="color: white"><b>Password</b></label>
+    <input type="password" name="password" class="form-control wow rubberBand" data-wow-duration="4s" data-wow-delay=".5s" style="width: 300px" id="validationCustom02" required placeholder="Password" >
+      <div class="invalid-feedback">
+          Please provide a valid password.
+      </div>
+      <div class="valid-feedback">
+          Looks good!
+      </div>
+  </div>
+  </div>
+<input id="ini" class="in" type="submit" onclick="my_function()" value="Submit" alt="Submit" width="55" height="30" style="margin-left: 35%;margin-top: 40px;width: 120px;height: 40px;"><br><br>
+</div>
+   </form>
+            <form action="signup.html">
+            <button id="imi" class="btn-outline-danger in" style="color: black"  ><b>sign up</b></button>
+            </form>
+        </div>
+        </div>
+    <script src="form.js"></script>
+    <script src="wow.min.js"></script>
+    <script>new WOW().init();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+            crossorigin="anonymous"></script>
+    <script src="js.js"></script>
+
+
+    </body>
+</html>

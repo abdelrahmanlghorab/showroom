@@ -1,0 +1,2677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title style="animation: alternate-reverse;">home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css.css">
+    <style>
+        body{
+            overflow-x: hidden;
+        }
+        .carousel-item{
+            height: 550px;
+        }
+        .carousel-item img{
+            width: 100%;
+            object-fit: cover;
+        }
+        #loading {
+            background-color: #ffffff;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: 1;
+            margin-top: 0px;
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            overflow: hidden !important;
+            right: 0px;
+            z-index: 999999;
+        }
+
+        #loading-center {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #loading-center img {
+            text-align: center;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            z-index: 99;
+            margin: 0 auto;
+        }
+
+        .car-wrapper {
+            width: 95%;
+            max-width: 95%;
+            margin-top: 20px;
+        }
+
+        .car-container {
+            padding: 10px;
+        }
+
+        .car-container .card-body {
+            padding: 0;
+        }
+
+        .car-container img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .car-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gray-bg {
+            background: #f6f6f6;
+        }
+
+        .car-item .car-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .car-item .car-overlay-banner {
+            background: rgba(219, 45, 46, 0.7);
+            position: absolute;
+            top: -100%;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: all 0.5s ease-out 0s;
+            -webkit-transition: all 0.5s ease-out 0s;
+            -moz-transition: all 0.5s ease-out 0s;
+            -ms-transition: all 0.5s ease-out 0s;
+            -o-transition: all 0.5s ease-out 0s;
+        }
+
+        .car-item .car-overlay-banner ul {
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 40%;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            z-index: 99;
+        }
+
+        .car-item .car-overlay-banner ul li {
+            display: inline-block;
+        }
+
+        .car-item .car-overlay-banner ul li a {
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            display: inline-block;
+            border-radius: 50%;
+        }
+
+        .car-item .car-list {
+            background: #ffffff;
+            color: #363636;
+            overflow: hidden;
+            bottom: 144px;
+            height: 0;
+            left: 0;
+            position: absolute;
+            transition: all 0.3s ease-out 0s;
+            -webkit-transition: all 0.3s ease-out 0s;
+            -moz-transition: all 0.3s ease-out 0s;
+            -ms-transition: all 0.3s ease-out 0s;
+            -o-transition: all 0.3s ease-out 0s;
+            width: 100%;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .car-item .car-list li {
+            line-height: 38px;
+            color: #999999;
+            display: inline-block;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+
+        .list-inline > li {
+            display: inline-block;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+
+        ul li {
+            list-style: square inside;
+            padding: 0px;
+            margin: 0px;
+            line-height: 30px;
+        }
+
+        .car-item .car-list li i {
+            padding-right: 3px;
+        }
+
+        .car-item .car-content {
+            background: #ffffff;
+            padding: 20px;
+        }
+
+        .car-item.gray-bg .car-content {
+            background: #f6f6f6;
+        }
+
+        .car-item .car-content a {
+            font-size: 16px;
+            font-weight: 600;
+            color: #db2d2e;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .car-item .separator {
+            margin-bottom: 15px;
+        }
+
+        .car-item .separator:before {
+            content: '';
+            display: block;
+            margin: auto;
+            left: 50%;
+            height: 1px;
+            width: 30px;
+            bottom: -10px;
+            background: #000000;
+            transition: width .8s ease, background-color .8s ease;
+            -webkit-transition: width .8s ease, background-color .8s ease;
+            -o-transition: width .8s ease, background-color .8s ease;
+            -ms-transition: width .8s ease, background-color .8s ease;
+            -moz-transition: width .8s ease, background-color .8s ease;
+            margin-bottom: 4px;
+        }
+
+        .car-item .separator:after {
+            width: 50px;
+            display: block;
+            margin: auto;
+            content: "";
+            height: 1px;
+            background: #000000;
+            bottom: 0px;
+            left: 50%;
+            transition: width .8s ease, background-color .8s ease;
+            -webkit-transition: width .8s ease, background-color .8s ease;
+            -o-transition: width .8s ease, background-color .8s ease;
+            -ms-transition: width .8s ease, background-color .8s ease;
+            -moz-transition: width .8s ease, background-color .8s ease;
+        }
+
+        .car-item .price span {
+            color: #363636;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .car-item .price span.old-price {
+            color: #999999;
+            text-decoration: line-through;
+            padding-right: 5px;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .car-item:hover .car-overlay-banner {
+            opacity: 1;
+            top: 0;
+        }
+
+        car-item .car-overlay-banner ul li a:hover {
+            background: #ffffff;
+            color: #db2d2e;
+        }
+
+        .car-item .car-overlay-banner ul li a {
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            display: inline-block;
+            border-radius: 50%;
+        }
+
+        .car-top {
+            width: 85px;
+            position: fixed;
+            bottom: -180px;
+            right: 30px;
+            z-index: 9999;
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .car-top.show {
+            bottom: 5% !important;
+            -webkit-transition: 1.0s;
+            -moz-transition: 1.0s;
+            transition: 1.0s;
+        }
+
+        .car-top.car-down {
+            -webkit-transition: 1.0s;
+            -ms-transition: 1.0s;
+            -o-transition: 1.0s;
+            -moz-transition: 1.0s;
+            transition: 1.0s;
+        }
+
+        .car-top.car-run {
+            bottom: 100% !important;
+            -webkit-transition: 1.0s;
+            -moz-transition: 1.0s;
+            transition: 1.0s;
+        }
+
+        .car-top:before, .car-top.car-run:before {
+            top: -1px;
+            left: 0px;
+            width: 85px;
+            height: 89px;
+            background: url(./images/car-focus.png) no-repeat 0 0;
+        }
+
+        .car-top:before, .car-top:after {
+            content: "";
+            position: absolute;
+            -o-transition: 0.2s;
+            -webkit-transition: 0.2s;
+            -ms-transition: 0.2s;
+            -moz-transition: 0.2s;
+            transition: 0.2s;
+            opacity: 0;
+        }
+
+        .car-top:hover:before, .car-top:hover:after, .car-top.car-run:before, .car-top.car-run:after {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <div id="loading-center">
+            <img src="./images/loader4.gif" alt="">
+        </div>
+    </div>
+    <div class="container-fluid" class="display-1" style=" text-align :center ;color: white;background-color: #a1020a;width: 30%;height:45px;border-radius: 10px;border: dashed ghostwhite 1px"><h1>German car show room</h1></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="home.html"><img src="./images/home-logo-icon-0.png" style="width: 50px;height: 50px;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse"  id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active list-unstyled">
+                    <a class="nav-link" href="usedmarket.html"><b>used market</b> <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item list-unstyled">
+                    <a class="nav-link" href="form.html"><b>login</b></a>
+                </li>
+                <li class="nav-item dropdown list-unstyled">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <b>caterogies</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="1.html"><b>mercedes</b></a>
+                        <a class="dropdown-item" href="2.html"><b>Opel</b></a>
+                        <!--  <div class="dropdown-divider"></div>-->
+                        <a class="dropdown-item" href="3.html"><b>audi</b></a>
+                        <a class="dropdown-item" href="4.html"><b>BMW</b></a>
+                        <a class="dropdown-item" href="5.html"><b>porsh</b></a>
+                        <a class="dropdown-item" href="6.html"><b>pigo</b></a>
+                        <a class="dropdown-item" href="7.html"><b>scoda</b></a>
+                        <a class="dropdown-item" href="8.html"><b>volkswagen</b></a>
+                    </div>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2 border-danger" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container display-1 " style="text-align:center; "><b>mercedes</b></div>
+    <div class="row">
+
+        <div class="col-12">
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./images/m0.png" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./images/m1.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./images/m2.jpeg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./images/m3.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./images/m4.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./images/m5.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="false"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="car-wrapper container">
+        <div class="row">
+            <div class="col-md-4 mt-3">
+                <div class="car-item gray-bg text-center">
+                    <div class="car-image">
+                        <img class="img-fluid" src="./images/m0.png" alt="">
+                        <div class="car-overlay-banner">
+                            <ul>
+                                <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                                <li><a href="1.html"><i class="fa fa-info-circle"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="car-list">
+                        <ul class="list-inline">
+                            <li><i class="fa fa-registered"></i> 2017</li>
+                            <li><i class="fa fa-cog"></i> Manual</li>
+                            <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                        </ul>
+                    </div>
+                    <div class="car-content">
+                        <div class="star">
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star-o orange-color"></i>
+                        </div>
+                        <b>marcedes c class</b>
+                        <div class="separator"></div>
+                        <div class="price">
+                            <span class="old-price">$35,568</span>
+                            <span class="new-price">$32,698 </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-3">
+                <div class="car-item gray-bg text-center">
+                    <div class="car-image">
+                        <img class="img-fluid" src="./images/m1.jpg" alt="">
+                        <div class="car-overlay-banner">
+                            <ul>
+                                <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                                <li><a href="1.html"><i class="fa fa-info-circle"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="car-list">
+                        <ul class="list-inline">
+                            <li><i class="fa fa-registered"></i> 2017</li>
+                            <li><i class="fa fa-cog"></i> Manual</li>
+                            <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                        </ul>
+                    </div>
+                    <div class="car-content">
+                        <div class="star">
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star-o orange-color"></i>
+                        </div>
+                        <b>marcedes AMG GT</b>
+                        <div class="separator"></div>
+                        <div class="price">
+                            <span class="old-price">$55,568</span>
+                            <span class="new-price">$59,698 </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-3">
+                <div class="car-item gray-bg text-center">
+                    <div class="car-image">
+                        <img class="img-fluid" src="./images/m2.jpeg" alt="">
+                        <div class="car-overlay-banner">
+                            <ul>
+                                <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                                <li><a href="1.html"><i class="fa fa-info-circle"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="car-list">
+                        <ul class="list-inline">
+                            <li><i class="fa fa-registered"></i> 2017</li>
+                            <li><i class="fa fa-cog"></i> Manual</li>
+                            <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                        </ul>
+                    </div>
+                    <div class="car-content">
+                        <div class="star">
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star-o orange-color"></i>
+                        </div>
+                        <b>marcedes GLE-Class</b>
+                        <div class="separator"></div>
+                        <div class="price">
+                            <span class="old-price">$45,568</span>
+                            <span class="new-price">$42,698 </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mt-3">
+                <div class="car-item gray-bg text-center">
+                    <div class="car-image">
+                        <img class="img-fluid" src="./images/m3.jpg" alt="">
+                        <div class="car-overlay-banner">
+                            <ul>
+                                <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                                <li><a href="1.html"><i class="fa fa-info-circle"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="car-list">
+                        <ul class="list-inline">
+                            <li><i class="fa fa-registered"></i> 2017</li>
+                            <li><i class="fa fa-cog"></i> Manual</li>
+                            <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                        </ul>
+                    </div>
+                    <div class="car-content">
+                        <div class="star">
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star-o orange-color"></i>
+                        </div>
+                        <b>marcedes GLA-Class</b>
+                        <div class="separator"></div>
+                        <div class="price">
+                            <span class="old-price">$39,568</span>
+                            <span class="new-price">$38,698 </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-3">
+                <div class="car-item gray-bg text-center">
+                    <div class="car-image">
+                        <img class="img-fluid" src="images/m4.jpg" alt="">
+                        <div class="car-overlay-banner">
+                            <ul>
+                                <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                                <li><a href="1.html"><i class="fa fa-info-circle"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="car-list">
+                        <ul class="list-inline">
+                            <li><i class="fa fa-registered"></i> 2017</li>
+                            <li><i class="fa fa-cog"></i> Manual</li>
+                            <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                        </ul>
+                    </div>
+                    <div class="car-content">
+                        <div class="star">
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star-o orange-color"></i>
+                        </div>
+                        <b>marcedes CLS-Class</b>
+                        <div class="separator"></div>
+                        <div class="price">
+                            <span class="old-price">$55,568</span>
+                            <span class="new-price">$52,698 </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-3">
+                <div class="car-item gray-bg text-center">
+                    <div class="car-image">
+                        <img class="img-fluid" src="images/m5.jpg" alt="">
+                        <div class="car-overlay-banner">
+                            <ul>
+                                <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                                <li><a href="1.html"><i class="fa fa-info-circle"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="car-list">
+                        <ul class="list-inline">
+                            <li><i class="fa fa-registered"></i> 2017</li>
+                            <li><i class="fa fa-cog"></i> Manual</li>
+                            <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                        </ul>
+                    </div>
+                    <div class="car-content">
+                        <div class="star">
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star orange-color"></i>
+                            <i class="fa fa-star-o orange-color"></i>
+                        </div>
+                        <b>GTA 5 Lowriders DLC</b>
+                        <div class="separator"></div>
+                        <div class="price">
+                            <span class="old-price">$60,568</span>
+                            <span class="new-price">$58,698 </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!---------------------------------------------------------------->
+    <div class="container display-1 " style="text-align:center; "><b>OPEL</b></div>
+    <div class="row">
+
+        <div class="col-12">
+            <div id="carouselExampleCaptions1" class="carousel slide" data-ride="carousel" style="; ">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleCaptions1" data-slide-to="0" class="active" style="..."></li>
+                    <li data-target="#carouselExampleCaptions1" data-slide-to="1" class="active" style="..."></li>
+                    <li data-target="#carouselExampleCaptions1" data-slide-to="2" class="active" style="..."></li>
+                    <li data-target="#carouselExampleCaptions1" data-slide-to="3" class="active" style="..."></li>
+                    <li data-target="#carouselExampleCaptions1" data-slide-to="4" class="active" style="..."></li>
+                    <li data-target="#carouselExampleCaptions1" data-slide-to="5" class="active" style="..."></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./images/op0.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./images/op1.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./images/op2.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./images/op3.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./images/op4.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./images/op5.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleCaptions1" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions1" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="false"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4 mt-3">
+            <div class="car-item gray-bg text-center">
+                <div class="car-image">
+                    <img class="img-fluid" src="./images/op0.jpg" alt="">
+                    <div class="car-overlay-banner">
+                        <ul>
+                            <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                            <li><a href="2.html"><i class="fa fa-info-circle"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="car-list">
+                    <ul class="list-inline">
+                        <li><i class="fa fa-registered"></i> 2017</li>
+                        <li><i class="fa fa-cog"></i> Manual</li>
+                        <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                    </ul>
+                </div>
+                <div class="car-content">
+                    <div class="star">
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star-o orange-color"></i>
+                    </div>
+                    <b>GTA 5 Lowriders DLC</b>
+                    <div class="separator"></div>
+                    <div class="price">
+                        <span class="old-price">$55,568</span>
+                        <span class="new-price">$52,698 </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-3">
+            <div class="car-item gray-bg text-center">
+                <div class="car-image">
+                    <img class="img-fluid" src="./images/op1.jpg" alt="">
+                    <div class="car-overlay-banner">
+                        <ul>
+                            <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                            <li><a href="2.html"><i class="fa fa-info-circle"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="car-list">
+                    <ul class="list-inline">
+                        <li><i class="fa fa-registered"></i> 2017</li>
+                        <li><i class="fa fa-cog"></i> Manual</li>
+                        <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                    </ul>
+                </div>
+                <div class="car-content">
+                    <div class="star">
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star-o orange-color"></i>
+                    </div>
+                    <b>GTA 5 Lowriders DLC</b>
+                    <div class="separator"></div>
+                    <div class="price">
+                        <span class="old-price">$88,568</span>
+                        <span class="new-price">$86,698 </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-3">
+            <div class="car-item gray-bg text-center">
+                <div class="car-image">
+                    <img class="img-fluid" src="images/op2.jpg" alt="">
+                    <div class="car-overlay-banner">
+                        <ul>
+                            <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                            <li><a href="1.html"><i class="fa fa-info-circle"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="car-list">
+                    <ul class="list-inline">
+                        <li><i class="fa fa-registered"></i> 2017</li>
+                        <li><i class="fa fa-cog"></i> Manual</li>
+                        <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                    </ul>
+                </div>
+                <div class="car-content">
+                    <div class="star">
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star-o orange-color"></i>
+                    </div>
+                    <b>GTA 5 Lowriders DLC</b>
+                    <div class="separator"></div>
+                    <div class="price">
+                        <span class="old-price">$54,568</span>
+                        <span class="new-price">$51,698 </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3">
+            <div class="car-item gray-bg text-center">
+                <div class="car-image">
+                    <img class="img-fluid" src="./images/op3.jpg" alt="">
+                    <div class="car-overlay-banner">
+                        <ul>
+                            <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                            <li><a href="2.html"><i class="fa fa-info-circle"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="car-list">
+                    <ul class="list-inline">
+                        <li><i class="fa fa-registered"></i> 2017</li>
+                        <li><i class="fa fa-cog"></i> Manual</li>
+                        <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                    </ul>
+                </div>
+                <div class="car-content">
+                    <div class="star">
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star-o orange-color"></i>
+                    </div>
+                    <b>GTA 5 Lowriders DLC</b>
+                    <div class="separator"></div>
+                    <div class="price">
+                        <span class="old-price">$66,568</span>
+                        <span class="new-price">$64,698 </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-3">
+            <div class="car-item gray-bg text-center">
+                <div class="car-image">
+                    <img class="img-fluid" src="./images/op4.jpg" alt="">
+                    <div class="car-overlay-banner">
+                        <ul>
+                            <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                            <li><a href="2.html"><i class="fa fa-info-circle"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="car-list">
+                    <ul class="list-inline">
+                        <li><i class="fa fa-registered"></i> 2017</li>
+                        <li><i class="fa fa-cog"></i> Manual</li>
+                        <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                    </ul>
+                </div>
+                <div class="car-content">
+                    <div class="star">
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star-o orange-color"></i>
+                    </div>
+                    <b>GTA 5 Lowriders DLC</b>
+                    <div class="separator"></div>
+                    <div class="price">
+                        <span class="old-price">$54,568</span>
+                        <span class="new-price">$51,698 </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-3">
+            <div class="car-item gray-bg text-center">
+                <div class="car-image">
+                    <img class="img-fluid" src="./images/op5.jpg" alt="">
+                    <div class="car-overlay-banner">
+                        <ul>
+                            <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                            <li><a href="2.html"><i class="fa fa-info-circle"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="car-list">
+                    <ul class="list-inline">
+                        <li><i class="fa fa-registered"></i> 2017</li>
+                        <li><i class="fa fa-cog"></i> Manual</li>
+                        <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                    </ul>
+                </div>
+                <div class="car-content">
+                    <div class="star">
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star orange-color"></i>
+                        <i class="fa fa-star-o orange-color"></i>
+                    </div>
+                    <b>GTA 5 Lowriders DLC</b>
+                    <div class="separator"></div>
+                    <div class="price">
+                        <span class="old-price">$58,568</span>
+                        <span class="new-price">$55,698 </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--------------------------------------------------------------->
+<div class="container display-1 " style="text-align:center; "><b>audi</b></div>
+<div class="row">
+
+    <div class="col-12">
+        <div id="carouselExampleCaptions2" class="carousel slide" data-ride="carousel"
+             style="; ">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions2" data-slide-to="0" style="..."></li>
+                <li data-target="#carouselExampleCaptions2" data-slide-to="1" style="..."></li>
+                <li data-target="#carouselExampleCaptions2" data-slide-to="2" style="..."></li>
+                <li data-target="#carouselExampleCaptions2" data-slide-to="3" style="..."></li>
+                <li data-target="#carouselExampleCaptions2" data-slide-to="4" style="..."></li>
+                <li data-target="#carouselExampleCaptions2" data-slide-to="5" style="..."></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./images/au0.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/au1.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/au2.jpeg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/au3.jpeg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/au4.jpeg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/au5.jpeg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions2" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions2" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="false"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/au0.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="3.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$78,568</span>
+                    <span class="new-price">$76,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/au1.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="3.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$74,568</span>
+                    <span class="new-price">$71,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/au2.jpeg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="3.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$86,568</span>
+                    <span class="new-price">$84,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/au3.jpeg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="3.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$90,568</span>
+                    <span class="new-price">$88,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/au4.jpeg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="3.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$56,568</span>
+                    <span class="new-price">$54,256 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/au5.jpeg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="3.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$66,568</span>
+                    <span class="new-price">$64,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!----------------------------------------------------------------------------------------------->
+<div class="container display-1 " style="text-align:center; "><b>BMW</b></div>
+<div class="row">
+    <div class="col-3">
+
+    </div>
+</div>
+
+<div class="col-12">
+    <div id="carouselExampleCaptions3" class="carousel slide" data-ride="carousel" style="; ">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions3" data-slide-to="0" style="..."></li>
+            <li data-target="#carouselExampleCaptions3" data-slide-to="1" style="..."></li>
+            <li data-target="#carouselExampleCaptions3" data-slide-to="2" style="..."></li>
+            <li data-target="#carouselExampleCaptions3" data-slide-to="3" style="..."></li>
+            <li data-target="#carouselExampleCaptions3" data-slide-to="4" style="..."></li>
+            <li data-target="#carouselExampleCaptions3" data-slide-to="5" style="..."></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active" style=" height: 550px;">
+                <img src="./images/bm0.jpeg" class="d-block w-100" style=" width: 100%; object-fit: cover;" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/bm1.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/bm2.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/bm3.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/bm4.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/bm5.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions3" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions3" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="false"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<div class="col-3">
+
+</div>
+
+</div>
+<div class="row">
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/bm0.jpeg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="4.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$84,568</span>
+                    <span class="new-price">$80,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/bm1.jpeg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="4.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$74,568</span>
+                    <span class="new-price">$70,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/bm2.jpeg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="4.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$94,568</span>
+                    <span class="new-price">$92,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/bm3.jpeg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="4.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$62,568</span>
+                    <span class="new-price">$60,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/bm4.jpeg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="4.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$65,568</span>
+                    <span class="new-price">$64,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/bm5.jpeg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="4.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$83,568</span>
+                    <span class="new-price">$81,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!---------------------------------------------------------------------------------------->
+<div class="container display-1 " style="text-align:center; "><b>porsh</b></div>
+<div class="row">
+    <div class="col-3">
+
+    </div>
+</div>
+
+<div class="col-12">
+    <div id="carouselExampleCaptions4" class="carousel slide" data-ride="carousel"
+         style="; ">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions4" data-slide-to="0" style="..."></li>
+            <li data-target="#carouselExampleCaptions4" data-slide-to="1" style="..."></li>
+            <li data-target="#carouselExampleCaptions4" data-slide-to="2" style="..."></li>
+            <li data-target="#carouselExampleCaptions4" data-slide-to="3" style="..."></li>
+            <li data-target="#carouselExampleCaptions4" data-slide-to="4" style="..."></li>
+            <li data-target="#carouselExampleCaptions4" data-slide-to="5" style="..."></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./images/p0.webp" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/p1.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/p2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/p3.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/p4.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/p5.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions4" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions4" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="false"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<div class="col-3">
+
+</div>
+
+</div>
+<div class="row">
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/p0.webp" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="5.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$111,568</span>
+                    <span class="new-price">$109,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/p1.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="5.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$101,568</span>
+                    <span class="new-price">$99,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/p2.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="5.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$104,568</span>
+                    <span class="new-price">$102,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/p3.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="5.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$99,568</span>
+                    <span class="new-price">$97,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/p4.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="5.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$101,568</span>
+                    <span class="new-price">$98,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/p5.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="5.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$100,568</span>
+                    <span class="new-price">$97,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!---------------------------------------------------------------------------------------------------------->
+<div class="container display-1 " style="text-align:center; "><b>pigo</b></div>
+<div class="row">
+    <div class="col-3">
+
+    </div>
+</div>
+
+<div class="col-12">
+    <div id="carouselExampleCaptions5" class="carousel slide" data-ride="carousel"
+         style="; ">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions5" data-slide-to="0" style="..."></li>
+            <li data-target="#carouselExampleCaptions5" data-slide-to="1" style="..."></li>
+            <li data-target="#carouselExampleCaptions5" data-slide-to="2" style="..."></li>
+            <li data-target="#carouselExampleCaptions5" data-slide-to="3" style="..."></li>
+            <li data-target="#carouselExampleCaptions5" data-slide-to="4" style="..."></li>
+            <li data-target="#carouselExampleCaptions5" data-slide-to="5" style="..."></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./images/pi0.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/pi1.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/pi2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/pi3.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/pi4.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/pi5.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions5" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions5" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="false"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<div class="col-3">
+
+</div>
+
+</div>
+<div class="row">
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/pi0.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="6.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$98,568</span>
+                    <span class="new-price">$96,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/pi1.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="6.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$65,568</span>
+                    <span class="new-price">$62,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/pi2.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="6.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$77,568</span>
+                    <span class="new-price">$75,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/pi3.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="6.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$66,568</span>
+                    <span class="new-price">$65,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/pi4.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="6.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$73,568</span>
+                    <span class="new-price">$70,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/pi5.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="6.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$85,568</span>
+                    <span class="new-price">$82,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!----------------------------------------------------------------------------------->
+<div class="container display-1 " style="text-align:center; "><b>scoda</b></div>
+<div class="row">
+    <div class="col-3">
+
+    </div>
+</div>
+
+<div class="col-12">
+    <div id="carouselExampleCaptions6" class="carousel slide" data-ride="carousel"
+         style="; ">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions6" data-slide-to="0" style="..."></li>
+            <li data-target="#carouselExampleCaptions6" data-slide-to="1" style="..."></li>
+            <li data-target="#carouselExampleCaptions6" data-slide-to="2" style="..."></li>
+            <li data-target="#carouselExampleCaptions6" data-slide-to="3" style="..."></li>
+            <li data-target="#carouselExampleCaptions6" data-slide-to="4" style="..."></li>
+            <li data-target="#carouselExampleCaptions6" data-slide-to="5" style="..."></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./images/sc0.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/sc1.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/sc2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/sc3.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/sc4.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/sc5.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions6" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions6" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="false"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<div class="col-3">
+
+</div>
+
+</div>
+<div class="row">
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/sc0.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="7.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$65,568</span>
+                    <span class="new-price">$62,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/sc1.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="7.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$70,568</span>
+                    <span class="new-price">$68,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/sc2.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="7.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$80,568</span>
+                    <span class="new-price">$78,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/sc3.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="7.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$63,568</span>
+                    <span class="new-price">$61,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/sc4.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="7.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$59,568</span>
+                    <span class="new-price">$57,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/sc5.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="7.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$87,568</span>
+                    <span class="new-price">$85,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-------------------------------------------------------------------------------------------------->
+<div class="container display-1 " style="text-align:center; "><b>volkswagen</b></div>
+<div class="row">
+    <div class="col-3">
+
+    </div>
+</div>
+
+<div class="col-12">
+    <div id="carouselExampleCaptions7" class="carousel slide" data-ride="carousel"
+         style="; ">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions7" data-slide-to="0" style="..."></li>
+            <li data-target="#carouselExampleCaptions7" data-slide-to="1" style="..."></li>
+            <li data-target="#carouselExampleCaptions7" data-slide-to="2" style="..."></li>
+            <li data-target="#carouselExampleCaptions7" data-slide-to="3" style="..."></li>
+            <li data-target="#carouselExampleCaptions7" data-slide-to="4" style="..."></li>
+            <li data-target="#carouselExampleCaptions7" data-slide-to="5" style="..."></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./images/v0.webp" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/v1.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/v2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/v3.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/v4.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/v5.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions7" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions7" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="false"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<div class="col-3">
+
+</div>
+
+</div>
+<div class="row">
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/v0.webp" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="8.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$79,568</span>
+                    <span class="new-price">$77,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/v1.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="8.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$54,568</span>
+                    <span class="new-price">$52,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/v2.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="8.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$81,568</span>
+                    <span class="new-price">$78,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/v3.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="8.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$86,568</span>
+                    <span class="new-price">$83,098 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/v4.jpg" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="8.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$70,568</span>
+                    <span class="new-price">$67,698 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3">
+        <div class="car-item gray-bg text-center">
+            <div class="car-image">
+                <img class="img-fluid" src="./images/v5.png" alt="">
+                <div class="car-overlay-banner">
+                    <ul>
+                        <li><a href="form.html"><i class="fa fa-cart-plus"></i></a></li>
+                        <li><a href="8.html"><i class="fa fa-info-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-list">
+                <ul class="list-inline">
+                    <li><i class="fa fa-registered"></i> 2017</li>
+                    <li><i class="fa fa-cog"></i> Manual</li>
+                    <li><i class="fa fa-info-circle"></i> 6,000 mi</li>
+                </ul>
+            </div>
+            <div class="car-content">
+                <div class="star">
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star orange-color"></i>
+                    <i class="fa fa-star-o orange-color"></i>
+                </div>
+                <b>GTA 5 Lowriders DLC</b>
+                <div class="separator"></div>
+                <div class="price">
+                    <span class="old-price">$89,879</span>
+                    <span class="new-price">$88,452 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="car-top">
+    <span><img src="./images/car.png" alt=""></span>
+</div>
+<<!--<button class="btn btn-outline-success my-2 my-sm-0" href="#">more info</button>--> >
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+<script>
+    $(window).on('load', function () {
+        $('#loading').delay(1000).fadeOut('slow');
+    });
+    $(document).ready(function () {
+        var $scrolltop = $('.car-top');
+
+        $scrolltop.on('click', function () {
+            $('html,body').animate({
+                scrollTop: 0
+            }, 800);
+            $(this).addClass("car-run");
+            setTimeout(function () {
+                $scrolltop.removeClass('car-run');
+            }, 1000);
+            return false;
+        });
+        $(window).on('scroll', function () {
+            if ($(window).scrollTop() >= 200) {
+                $scrolltop.addClass("show");
+                $scrolltop.addClass("car-down");
+            } else {
+                $scrolltop.removeClass("show");
+                setTimeout(function () {
+                    $scrolltop.removeClass('car-down');
+                }, 300);
+            }
+        });
+    });
+</script>
+</body>
+</html>
